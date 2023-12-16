@@ -1,0 +1,29 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: docs
+spec:
+  rules:
+    - http:
+        paths:
+          - path: /docs/*
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: docs-http
+                port:
+                  number: 8011
+          - path: /crawlers/*
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: crawlers
+                port:
+                  number: 8021
+#          - path: /tech-docs-web/*
+#            pathType: ImplementationSpecific
+#            backend:
+#              service:
+#                name: tech-docs-web
+#                port:
+#                  number: 8000
